@@ -4,7 +4,7 @@
   "description": "Bara Electron integration module",
   "repository": {
     "type": "git",
-    "url": "git@github.com:barajs/express.git"
+    "url": "git@github.com:barajs/electron.git"
   },
   "publishConfig": {
     "access": "public"
