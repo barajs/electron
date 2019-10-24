@@ -1,6 +1,6 @@
 {
   "name": "@barajs/electron",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Bara Electron integration module",
   "repository": {
     "type": "git",
