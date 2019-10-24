@@ -1,0 +1,40 @@
+{
+  "name": "@barajs/electron",
+  "version": "0.0.0-development",
+  "description": "Bara Electron integration module",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:barajs/express.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsnd --debounce 3000 --respawn server.ts",
+    "compile": "tsc -b",
+    "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "@barajs/core": "3.0.0-alpha.416",
+    "electron": "7.0.0"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "3.0.4",
+    "@semantic-release/commit-analyzer": "6.3.0",
+    "@semantic-release/git": "7.0.16",
+    "@semantic-release/github": "5.5.4",
+    "@semantic-release/npm": "5.2.0",
+    "@types/electron": "1.6.10",
+    "prettier": "1.18.2",
+    "semantic-release": "15.13.27",
+    "ts-node-dev": "1.0.0-pre.43",
+    "typescript": "3.6.4"
+  }
+}
