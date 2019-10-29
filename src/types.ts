@@ -1,15 +1,13 @@
-import { BrowserWindowConstructorOptions, App, BrowserWindow } from 'electron'
+import { Store } from 'redux'
 
-export interface ElectronMold {
-  appName?: string
-  singleInstance?: boolean
-  quitAllClosed?: boolean
-  windows?: {
-    [k: string]: BrowserWindowConstructorOptions
-  }
+export interface ReduxMold {
+  actions: string[]
+  asyncActions: string[]
+  preloadedState: any
+  reducers: []
+  store: Store
 }
 
-export interface ElectronContext {
-  app: App
-  windows: { [k: string]: BrowserWindow }
+export interface ReduxContext {
+  store: Store
 }

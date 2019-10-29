@@ -1,51 +1,40 @@
 import { portion, flow, popEvent, popSeep } from '@barajs/core'
-import { app, BrowserWindow } from 'electron'
-import { ElectronMold, ElectronContext } from './types'
-import * as flows from './flow'
+import { ReduxMold, ReduxContext } from './types'
+import { createStore } from 'redux'
+// import * as flows from './flow'
 
-const Electron = portion<any, ElectronContext, ElectronMold>({
-  name: 'bara-electron',
-  mold: { singleInstance: true, quitOnClosed: true },
+const Redux = portion<any, ReduxContext, ReduxMold>({
+  name: 'bara-redux',
+  mold: {},
   init: mold => {
-    const { appName, singleInstance } = mold
-    appName && app.setName(appName)
-    const gotTheLock = app.requestSingleInstanceLock()
-    if (singleInstance && !gotTheLock) {
-      app.quit()
-    }
-
-    const windows: ElectronContext['windows'] = {}
-
-    return { app, windows }
+    const { reducers, preloadedState, store: predefinedStore } = mold
+    const store = !predefinedStore
+      ? createStore(reducers, preloadedState)
+      : predefinedStore
+    return { store }
   },
-  whenInitialized: flow<unknown, ElectronContext, ElectronMold>({
-    bootstrap: async ({ context, next }) => {
-      const { app: electronApp } = context
-      electronApp.addListener('ready', (launchInfo: unknown) => {
-        next({ ...context, launchInfo })
+  whenInitialized: flow<unknown, ReduxContext, ReduxMold>({
+    bootstrap: ({ context, next }) => {
+      const { store } = context
+      next({})
+    },
+  }),
+  whenStateChanged: flow<any, ReduxContext, ReduxMold>({
+    bootstrap: ({ context, next }) => {
+      const { store } = context
+      store.subscribe(() => {
+        next(store.getState())
       })
     },
   }),
-  ...flows,
+  // ...flows,
 })
 
-const {
-  whenInitialized: whenElectronReady,
-  whenWindowReadyToShow,
-  whenWindowAllClosed,
-  whenWindowCreated,
-} = popEvent(Electron)
+const { whenInitialized: whenStoreListening, whenStateChanged } = popEvent(
+  Redux,
+)
 
-const { winNameEq } = popSeep(whenWindowCreated)
-
-export {
-  Electron,
-  whenElectronReady,
-  whenWindowReadyToShow,
-  whenWindowAllClosed,
-  whenWindowCreated,
-  winNameEq,
-}
+export { Redux, whenStoreListening, whenStateChanged }
 export * from './types'
-export * from './curry'
-export default Electron
+// export * from './formula'
+export default Redux
