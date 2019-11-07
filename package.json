@@ -22,7 +22,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@barajs/core": "3.0.0-alpha.416",
+    "@barajs/core": "3.0.0-alpha.427",
     "redux": "4.0.4"
   },
   "devDependencies": {
