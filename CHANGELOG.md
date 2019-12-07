@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/barajs/electron/compare/v1.0.1...v1.0.2) (2019-12-07)
+
+
+### Bug Fixes
+
+* **deps:** upgrade @barajs/core ([93c84a0](https://github.com/barajs/electron/commit/93c84a0e9767977fe755e72778b1c64756c90fc6))
+
 ## [1.0.1](https://github.com/barajs/electron/compare/v1.0.0...v1.0.1) (2019-10-24)
 
 
