@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@barajs/core": "3.0.0-alpha.430",
-    "electron": "7.0.0"
+    "electron": "9.0.5"
   },
   "devDependencies": {
     "@semantic-release/changelog": "3.0.4",
