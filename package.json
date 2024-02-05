@@ -32,7 +32,7 @@
     "@semantic-release/github": "5.5.4",
     "@semantic-release/npm": "5.2.0",
     "@types/electron": "1.6.10",
-    "prettier": "1.18.2",
+    "prettier": "3.2.5",
     "semantic-release": "15.13.27",
     "ts-node-dev": "1.0.0-pre.43",
     "typescript": "3.6.4"
